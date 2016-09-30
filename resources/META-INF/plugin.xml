@@ -1,0 +1,36 @@
+<idea-plugin version="2">
+  <id>org.idea.plugin.yandex.service</id>
+  <name>Yandex Services</name>
+  <version>1.0</version>
+  <vendor email="pdpopd@gmail.com">Ivan Syufu</vendor>
+
+  <description><![CDATA[
+      Spell check selected text.
+      Translate selected text, need Yandex Translate API key. https://tech.yandex.ru/keys/get/?service=trnsl
+    ]]></description>
+
+  <change-notes><![CDATA[]]>
+  </change-notes>
+
+  <idea-version since-build="141.0"/>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <applicationService serviceImplementation="org.idea.plugin.yandex.service.state.State"/>
+    <projectConfigurable instance="org.idea.plugin.yandex.service.settings.Config"/>
+  </extensions>
+
+  <actions>
+    <group id="api.yandex.ru" text="Yandex Services"
+           description="Yandex Services"
+           popup="true">
+      <add-to-group group-id="EditMenu" anchor="last"/>
+      <action id="CheckTextAction" class="org.idea.plugin.yandex.service.actions.CheckText"
+              text="Check text"
+              description="Check text"/>
+      <action id="TranslateTextAction" class="org.idea.plugin.yandex.service.actions.TranslateText"
+              text="Translate text"
+              description="Translate text"/>
+    </group>
+  </actions>
+
+</idea-plugin>
